@@ -64,19 +64,19 @@ public class BicUtil {
     private static void validateEmpty(final String bic) {
         if(bic == null) {
             throw new BicFormatException(BIC_NOT_NULL,
-                    "Null can't be a valid Bic.");
+                    "Null no puede ser un Bic válido.");
         }
 
         if(bic.length() == 0) {
             throw new BicFormatException(BIC_NOT_EMPTY,
-                    "Empty string can't be a valid Bic.");
+                    "Un string vacío no puede ser un Bic válido.");
         }
     }
 
     private static void validateLength(final String bic) {
         if(bic.length() != BIC8_LENGTH && bic.length() != BIC11_LENGTH) {
             throw new BicFormatException(BIC_LENGTH_8_OR_11,
-                    String.format("Bic length must be %d or %d",
+                    String.format("La longitud del Bic debe de ser %d o %d",
                             BIC8_LENGTH, BIC11_LENGTH));
         }
     }
@@ -84,7 +84,7 @@ public class BicUtil {
     private static void validateCase(final String bic) {
         if(!bic.equals(bic.toUpperCase())) {
             throw new BicFormatException(BIC_ONLY_UPPER_CASE_LETTERS,
-                    "Bic must contain only upper case letters.");
+                    "El Bic debe contener sólo letras mayúsculas.");
         }
     }
 
@@ -93,7 +93,7 @@ public class BicUtil {
         for(final char ch : bankCode.toCharArray()) {
             if(!Character.isLetter(ch)) {
                 throw new BicFormatException(BANK_CODE_ONLY_LETTERS, ch,
-                        "Bank code must contain only letters.");
+                        "El código del banco debe contener solo letras.");
             }
         }
     }
@@ -106,12 +106,12 @@ public class BicUtil {
                 !Character.isLetter(countryCode.charAt(1))) {
             throw new BicFormatException(COUNTRY_CODE_ONLY_UPPER_CASE_LETTERS,
                     countryCode,
-                    "Bic country code must contain upper case letters");
+                    "Código de país Bic debe contener letras mayúsculas");
         }
 
         if(CountryCode.getByCode(countryCode) == null) {
             throw new UnsupportedCountryException(countryCode,
-                    "Country code is not supported.");
+                    "El código de país no está soportado.");
         }
     }
 
@@ -120,7 +120,7 @@ public class BicUtil {
         for(char ch : locationCode.toCharArray()) {
             if(!Character.isLetterOrDigit(ch)) {
                 throw new BicFormatException(LOCATION_CODE_ONLY_LETTERS_OR_DIGITS,
-                        ch, "Location code must contain only letters or digits.");
+                        ch, "El código de localización solo debe contener letras o dígitos.");
             }
         }
     }
@@ -130,7 +130,7 @@ public class BicUtil {
         for(final char ch : branchCode.toCharArray()) {
             if(!Character.isLetterOrDigit(ch)) {
                 throw new BicFormatException(BRANCH_CODE_ONLY_LETTERS_OR_DIGITS,
-                        ch, "Branch code must contain only letters or digits.");
+                        ch, "Código de la sucursal debe contener sólo letras o dígitos.");
             }
         }
     }
